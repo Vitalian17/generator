@@ -17,13 +17,46 @@
     <div class="jumbotron">
             
             <h2>Generate Password</h2>
+            <p>How many characters? <input type="number" id="charNum" value="12" min="8" max="16" /></p>
+            Number: <input type="checkbox" id="num"/>
+            Symbol: <input type="checkbox" id="sym"/>
             <hr class="my-4">
             <div class="dotbox" style="border-style: dotted; height: 160px;">
-            <p>Your secure password</p>
+            <input type="text" id="yourPw"></input>
             </div>    
             <hr class="my-4">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Generate Password</a>
+            <button class="btn btn-primary btn-lg" id="submit">Generate Password</button>
             <a class="btn btn-primary btn-lg" href="#" role="button">Copy to Clipboard</a>
           </div>
+
+    <script>
+
+var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var num = '0123456789';
+var sym = '!@#$%^&*=-_';
+
+var charNum = document.getElementById("charNum");
+var numBox = document.getElementById("num");
+var symBox = document.getElementById("sym");
+var submit = document.getElementById("submit");
+var yourPw = document.getElementById("yourPw");
+
+submit.addEventListener("click",function(e){
+    var characters = char;
+    (numBox.checked) ? characters += num : '';
+    (symBox.checked) ? characters += sym : '';
+    yourPw.value = password(charNum.value, characters);
+});
+
+function password(l,characters){
+		var pwd = '';
+    for(var i = 0; i<l; i++){
+    		pwd += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return pwd;
+}
+    
+    
+    </script>
 </body>
 </html>
