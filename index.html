@@ -22,41 +22,15 @@
             Symbol: <input type="checkbox" id="sym"/>
             <hr class="my-4">
             <div class="dotbox" style="border-style: dotted; height: 160px;">
-            <input type="text" id="yourPw"></input>
+            <input type="text" id="yourPw" style="font-size: 48px; text-align: center;"></input>
             </div>    
             <hr class="my-4">
             <button class="btn btn-primary btn-lg" id="submit">Generate Password</button>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Copy to Clipboard</a>
+            <a class="btn btn-primary btn-lg" id="clipboard" href="#" role="button">Copy to Clipboard</a>
           </div>
 
-    <script>
-
-var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var num = '0123456789';
-var sym = '!@#$%^&*=-_';
-
-var charNum = document.getElementById("charNum");
-var numBox = document.getElementById("num");
-var symBox = document.getElementById("sym");
-var submit = document.getElementById("submit");
-var yourPw = document.getElementById("yourPw");
-
-submit.addEventListener("click",function(e){
-    var characters = char;
-    (numBox.checked) ? characters += num : '';
-    (symBox.checked) ? characters += sym : '';
-    yourPw.value = password(charNum.value, characters);
-});
-
-function password(l,characters){
-		var pwd = '';
-    for(var i = 0; i<l; i++){
-    		pwd += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return pwd;
-}
     
+    <script src="gen.js"></script>
     
-    </script>
 </body>
 </html>
